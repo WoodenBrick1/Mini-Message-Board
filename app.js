@@ -7,6 +7,7 @@ const app = express()
 
 app.set("views", join(import.meta.dirname, "views"))
 app.set("view engine", "ejs")
+app.use(express.static(join(import.meta.dirname, "public")))
 
 app.use(express.urlencoded({ extended: true }))
 
