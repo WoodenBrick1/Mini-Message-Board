@@ -6,6 +6,7 @@ const path = require("node:path")
 app.set("views", path.join(__dirname, "views"))
 app.set("view engine", "ejs")
 
+app.use(express.urlencoded({ extended: true }))
 
 const messages = [
     {
@@ -27,9 +28,17 @@ app.get('/', async (req, res) => {
 })
 
 app.get('/new', async (req, res) => {
-    res.send("add")
+    res.render("form", { title: 'New Message' })
 })
 
+app.post('/new', async (req, res) => {
+    const { messageText, messageUser } = req.body
+
+    messages.push({ text: messageText, user: messageUser, added: new Date() })
+
+    res.redirect('/')
+
+})
 
 const PORT = 3001
 app.listen(PORT, (error) => {

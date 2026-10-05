@@ -6,10 +6,12 @@
     <title><%= title %></title>
 </head>
 <body>
+    <a href="./new">Add Message</a>
+
     <% messages.forEach(message => { %>
-       <%- include('message', {text: message.text,
-                               user: message.user,
-                               date: message.added}) %>
+       <%- include('components/message', {text: message.text,
+                                          user: message.user,
+                                          date: message.added}) %>
     <% }); %>
 </body>
 </html>
