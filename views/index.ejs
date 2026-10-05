@@ -3,15 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= title %></title>
+    <title>Mini Message Board</title>
 </head>
 <body>
     <a href="./new">Add Message</a>
 
-    <% messages.forEach(message => { %>
-       <%- include('components/message', {text: message.text,
-                                          user: message.user,
-                                          date: message.added}) %>
-    <% }); %>
+    <div id='messages'>
+        <% messages.forEach((message, index) => { %>
+            <div class='message'>
+                <p><%= message.text %></p>
+                <a href=<%= '/message/' + index %>>More Info</a>
+            </div>  
+        <% }); %>
+    </div>
+    
 </body>
 </html>
